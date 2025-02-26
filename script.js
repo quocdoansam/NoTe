@@ -1,12 +1,24 @@
 const modal = document.querySelector('.modal');
-const cancelModalBtn = document.querySelector('.cancel-modal-btn');
+const cancelModalBtns = document.querySelectorAll('.cancel-modal-btn');
+
 const joinButton = document.querySelector('.join-button');
 const userButton = document.querySelector('.user-button');
+
 const loginModal = document.querySelector('.login-modal');
-const loginButton = loginModal.querySelector('.login-button');
-const loginForm = loginModal.querySelector('.login-form')
+const createModal = document.querySelector('.create-modal');
+
+const loginForm = document.querySelector('.login-form');
+const createForm = document.querySelector('.create-form');
+
+const loginButton = document.querySelector('.login-button');
 const loginUsernameInput = loginModal.querySelector('.username-or-email-input');
 const loginPasswordInput = loginModal.querySelector('.password-input');
+
+const createButton = document.querySelector('.create-button');
+const createBtn = createForm.querySelector('.create-btn');
+const createUsernameInput = createForm.querySelector('.email-input');
+const createPasswordInput = createForm.querySelector('.password-input');
+const createPasswordConfirmInput = createForm.querySelector('.confirm-password-input');
 
 const addInput = document.querySelector('.add-input');
 const addbtn = document.querySelector('.add-btn');
@@ -33,18 +45,24 @@ function getCookie(name) {
     return null;
 }
 
-
 // Modal
 document.addEventListener("click", (e) => {
-    if (modal.classList.contains("open") && !modal.contains(e.target) && e.target !== joinButton) {
-        modal.classList.remove("open");
+    if (loginModal.classList.contains("open") && !loginModal.contains(e.target) && e.target !== joinButton) {
+        loginModal.classList.remove("open");
+    }
+
+    if (createModal.classList.contains("open") && !createModal.contains(e.target) && e.target !== createButton) {
+        createModal.classList.remove("open");
     }
 });
 
-cancelModalBtn.addEventListener('click', (e) => {
-    if (modal.classList.contains("open") && e.target !== joinButton) {
-        modal.classList.remove("open");
-    }
+cancelModalBtns.forEach((btn) => {
+    btn.addEventListener("click", () => {
+        const modal = btn.closest(".modal");
+        if (modal && modal.classList.contains("open")) {
+            modal.classList.remove("open");
+        }
+    });
 });
 
 // Join
@@ -52,7 +70,19 @@ joinButton.addEventListener('click', () => {
     loginModal.classList.toggle('open');
 });
 
+// Create account
+createButton.addEventListener('click', () => {
+    createModal.classList.add('open');
+    loginModal.classList.remove('open'); // Hidden login modal
+});
+
 // Login
+loginButton.addEventListener('click', () => {
+    loginModal.classList.add('open');
+    createModal.classList.remove('open');
+    console.log("clicked");
+});
+
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     const username = loginUsernameInput.value.trim();
@@ -66,6 +96,12 @@ loginForm.addEventListener('submit', async (e) => {
         .then(user => {
             if (user) {
                 saveToCookie(3600, "userId", user.id);
+
+                // Close login modal
+                modal.classList.remove('open');
+
+                // Reload the website
+                location.reload();
             } else {
                 console.log("Invalid credentials.");
             }
@@ -86,7 +122,6 @@ async function login(username, password) {
         const users = await response.json();
 
         if (users.length > 0) {
-            console.log("Login successful!", users[0]);
             return users[0];
         } else {
             console.log("Invalid username or password.");
@@ -107,20 +142,23 @@ async function loadUserData() {
         });
 
         if (!response.ok) {
-            throw new Error("Error fetching data");
+            throw new Error(response.status);
         }
+
         const data = await response.json();
+
         mappingUserData(data[0]);
+
+        joinButton.style.display = 'none'; // Hidden join button
+        userButton.style.display = 'block'; // Display account button
     } catch (error) {
-        console.error("Login failed:", error);
+        joinButton.style.display = 'block'; // Display join button
+        console.error(error);
         return null;
     }
 }
 
 function mappingUserData(userData) {
-    joinButton.style.display = 'none';
-
-    userButton.style.display = 'block';
     userButton.textContent = userData.name;
 }
 
