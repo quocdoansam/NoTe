@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,23 @@
     <script src="script.js" defer></script>
     <title>NoTe</title>
 </head>
+
 <body>
     <header>
         <div class="container">
             <h1>NoTe</h1>
             <button class="btn join-button">Join for long term storage</button>
             <button class="btn user-button">@Username</button>
+            <div class="create-modal modal">
+                <button class="cancel-modal-btn btn">Cancel</button>
+                <form class="create-form">
+                    <input type="text" class="email-input input" placeholder="Enter your e-mail">
+                    <input type="password" class="password-input input" placeholder="Enter password">
+                    <input type="password" class="confirm-password-input input" placeholder="Confirm password">
+                    <button class="create-btn btn">CREATE</button>
+                </form>
+                <button class="login-button btn">Have an account?</button>
+            </div>
             <div class="login-modal modal">
                 <button class="cancel-modal-btn btn">Cancel</button>
                 <form class="login-form">
@@ -20,8 +32,9 @@
                     <input type="password" class="password-input input" placeholder="Password">
                     <button class="login-btn btn">LOGIN</button>
                 </form>
-                <button class="create-button btn">Don't have a account?</button>
+                <button class="create-button btn">Don't have an account?</button>
             </div>
+            
         </div>
     </header>
     <main>
@@ -37,10 +50,11 @@
                         <option class="sort-option" value="oldest">Oldest</option>
                     </select>
                 </div>
-                <span class="note-count">0 Note</span>
+                <span class="note-count">0 note</span>
             </div>
             <div class="note-container"><!-- Note Here!--></div>
         </div>
     </main>
 </body>
+
 </html>
