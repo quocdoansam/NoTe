@@ -1,0 +1,342 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+@font-face {
+    
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #ececec;
+}
+
+button {
+    cursor: pointer;
+    font-family: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+
+input {
+    font-family: inherit;
+}
+
+select {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 8px;
+}
+
+.btn {
+    padding: 16px 24px;
+    border: none;
+    border-radius: 8px;
+    background: #ffffff;
+    font-weight: bolder;
+    font-size: 14px;
+    color: gray;
+    transition: all .15s ease;
+}
+
+.btn:hover {
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .3);
+    color: #000;
+}
+
+.input {
+    border: none;
+    padding: 16px 24px;
+    outline: none;
+    border-radius: 8px;
+    max-lines: 3px;
+    width: 100%;
+    font-size: 16px;
+}
+
+header {
+    padding: 8px 0;
+    position: sticky;
+    top: 0;
+    background: #ececec;
+    border-bottom: 1px solid #d4d4d4;
+}
+
+header .container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.join-button, .user-button {
+    padding: 8px 16px;
+}
+
+.user-button {
+    display: none;
+}
+
+main {
+    padding: 16px 0;
+}
+
+.add-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 16px;
+}
+
+.add-input {
+    border: none;
+    padding: 16px 24px;
+    outline: none;
+    border-radius: 8px;
+    max-lines: 3px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.note-container {
+    padding: 16px 0 0 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.note {
+    background: #fff;
+    padding: 16px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.note-action {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 8px;
+}
+
+.note-action.show {
+    display: flex;
+}
+
+.note-action.hidden {
+    display: none;
+}
+
+.note-content {
+    font-size: 18px;
+    font-weight: 400;
+    word-break: break-all;
+    word-wrap: break-word;
+}
+
+.note-time {
+    color: gray;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.note-action button {
+    padding: 8px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    font-weight: bold;
+    background: transparent;
+    color: gray;
+    transition: all .2s ease;
+    background: #ececec;
+}
+
+.note-action button:hover {
+    color: #000;
+    box-shadow: 0 0 0 2px rgba(0, 0, 0, .3);
+}
+
+.notice {
+    text-align: center;
+    padding: 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: #808080;
+}
+
+.tool-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 16px;
+}
+
+.sort {
+    padding: 8px 24px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background: #FFF;
+    color: #808080;
+}
+
+.note-count {
+    padding: 8px 16px;
+    border-radius: 6px;
+    background: #FFF;
+    font-size: 16px;
+    font-weight: bold;
+    color: #808080;
+}
+
+.edit-input {
+    border: none;
+    padding: 16px 24px;
+    outline: none;
+    border-radius: 8px;
+    max-lines: 3px;
+    width: 100%;
+    font-size: 16px;
+    background: #ececec;
+}
+
+.edit-section {
+    display: none;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.edit-section .button-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    gap: 8px;
+}
+
+.button-group button {
+    padding: 8px;
+    background: #ececec;
+}
+
+.content-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.shadow-error {
+    box-shadow: 0 0 5px 2px #ffadad;
+    transition: all .2s ease-in-out;
+}
+
+.month-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.month-title {
+    color: #808080;
+}
+
+.notes {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* modal */
+.modal {
+    width: 50%;
+    max-width: 500px;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    box-shadow: 0 0 3px 0px #808080;
+    border-radius: 12px;
+    background: #ececec;
+}
+
+/* Login */
+.login-modal {
+    width: 50%;
+    max-width: 500px;
+    position: fixed;
+    display: none;
+    flex-direction: column;
+    align-items: start;
+    justify-content: space-between;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 16px;
+    box-shadow: 0 0 3px 0px #808080;
+    border-radius: 12px;
+    background: #ececec;
+}
+
+.login-modal.open {
+    display: flex;
+}
+
+.login-modal.close {
+    display: none;
+}
+
+.cancel-modal-btn {
+    display: none;
+    padding: 8px 16px;
+}
+
+@media (max-width: 500px) {
+    .modal {
+        width: 100%;
+        height: 100%;
+        box-shadow: unset;
+    }
+
+    .cancel-modal-btn {
+        display: block;
+    }
+}
+
+.login-modal span {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    padding: 16px 0;
+    width: 100%;
+}
+
+.login-modal .create-button {
+    margin-top: 16px;
+    padding: 8px 8px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 24px;
+    width: 100%;
+}

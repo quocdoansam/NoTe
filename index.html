@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+    <title>NoTe</title>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>NoTe</h1>
+            <button class="btn join-button">Join for long term storage</button>
+            <button class="btn user-button">@Username</button>
+            <div class="login-modal modal">
+                <button class="cancel-modal-btn btn">Cancel</button>
+                <form class="login-form">
+                    <input type="text" class="username-or-email-input input" placeholder="Username or email">
+                    <input type="password" class="password-input input" placeholder="Password">
+                    <button class="login-btn btn">LOGIN</button>
+                </form>
+                <button class="create-button btn">Don't have a account?</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="add-container">
+                <input class="add-input" type="text" placeholder="Write anything...">
+                <button class="btn add-btn">Add</button>
+            </div>
+            <div class="tool-container">
+                <div class="sort-container">
+                    <select class="sort">
+                        <option class="sort-option" value="newest">Newest</option>
+                        <option class="sort-option" value="oldest">Oldest</option>
+                    </select>
+                </div>
+                <span class="note-count">0 Note</span>
+            </div>
+            <div class="note-container"><!-- Note Here!--></div>
+        </div>
+    </main>
+</body>
+</html>
