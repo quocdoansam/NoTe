@@ -1,6 +1,6 @@
 # NoTe
 > A website to take notes.
-## Features:
+## Feature:
 - **Sign-in**
 - **Sign-up**
 - **Add note**
